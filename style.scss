@@ -6,6 +6,12 @@ $colors: (
 
 $padding: 1em;
 
+$font-light: 300;
+$font-regular:400;
+$font-bold: 700;
+$font-black: 900;
+
+
 body, html {
     height: 100%;
     width: 100%;
@@ -17,21 +23,48 @@ body, html {
     @return map-get($colors, $color-name)
 }
 
+$desktop: 800px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}){
+        @content;
+    }
+}
+
+
 body {
-    font-family: sans-serif;
+    font-family: 'Montserrat',sans-serif;
     color: color(accent);
+    background-color: color(primary);
+
 
     main {
 
         height: 100%;
         width: 100%;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
         background-color: color(bg);
         display: grid;
+        grid-template-areas: "dashboard" "ball-container" "bottom";
         grid-template-rows: 120px auto 120px;
 
-        .subtitle {
-            font-size: 10px;
+        @include desktop {
+            grid-template-areas: "dashboard ball-container bottom"
+            grid-template-columns: 20% auto 10%;
         }
+
+        
+
+        .subtitle {
+            margin: 0;
+            margin-top: .2em;
+            font-size: 14px;
+            font-weight: $font-light;
+            text-transform: uppercase;
+        }
+
 
         #dashboard {
 
@@ -41,12 +74,26 @@ body {
             grid-template-columns: 1fr 1fr;
             z-index: 3;
             padding: $padding;
+            height: 120px;
+
+            @include desktop {
+                height: 100%;
+                clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
+            }
+
+            #score {
+                margin: 0;
+                font-size: 24px;
+                font-weight: $font-black;
+                
+            }
 
             button {
                 display: inline-block;
                 text-decoration: none;
                 text-transform: uppercase;
                 font-size: 16px;
+                font-weight: $font-bold;
                 color: color(accent);
                 background: none;
                 border-radius: 40px;
@@ -54,11 +101,21 @@ body {
                 height: 40px;
                 border-width: 2px;
                 border-color: color(accent);
+
+                &:hover {
+                    background-color: color(accent);
+                    color: color(primary)
+                }
+
+                &:active {
+                    background-color: gray;
+                    border-color: gray;
+                }
             }
-        }
 
-        #ball-container {
-
+            #right {
+                text-align: right;
+            }
         }
 
         .dot {
@@ -79,20 +136,27 @@ body {
             clip-path: polygon(0 0, 100% 33%, 100% 100%, 0 100%);
             z-index: 3;
             padding: $padding;
+            text-align: right;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            height: 120px;
+
+            @include desktop {
+                height: 100%;
+            }
 
             #slider-container {
+                display: inline-block;
                 width: 100%;
 
                 .slider {
                     appearance: none;
-                    width: 100%; /* Full-width */
+                    width: 100%; 
                     height: 2px; 
-                    background: $accent;
-                    outline: 0px; 
-                }
-
-                .subtitle {
-                    color: red;
+                    background: colors(accent);
+                    outline: 0px;
+                    margin-bottom: 1em;
                 }
 
             }

@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Falling Dots</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700,900" rel="stylesheet">
 </head>
 <body>
+
     <main>
         <section id="dashboard">
             <div id="left"><button id="play-pause-button">Play</button></div>
             <div id="right">
                 <span id="score">100,000</span>
-                <span class="subtitle">Points</span>
+                <p class="subtitle">Points</p>
             </div>
         </section>
         <section id="ball-container">
@@ -22,11 +24,13 @@
         <section id="bottom">
             <span id="slider-container">
                     <input type="range" min="1" max="100" value="50" class="slider">
-                    <span class="subtitle">Pixels/sec</span>
+                    <span class="subtitle">100 Pixels/sec</span>
             </span>
             
         </section>
     </main>
     
+    <script src="index.js"></script>
+
 </body>
 </html>
