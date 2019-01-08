@@ -1,0 +1,30 @@
+$colors: (
+    primary: #0F0F0F,
+    bg: #191919,
+    font-color: #FFFFFF
+);
+
+$margin-left: 1em;
+
+body, html {
+    height: 100%;
+}
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+body {
+
+    font: color(font-color);
+
+    header {
+        height: 100px;
+        background-color: color(primary);
+    }
+
+    main {
+        background-color: color(bg);
+    }
+
+}
