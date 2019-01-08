@@ -1,7 +1,9 @@
 $colors: (
     primary: #0F0F0F,
     bg: #191919,
-    accent: #FFFFFF
+    accent: #FFFFFF,
+    highlighted: #5050E3,
+    selected: darken(#5050E3, 10%)
 );
 
 $padding: 1em;
@@ -50,14 +52,20 @@ body {
         grid-template-areas: "dashboard" "ball-container" "bottom";
         grid-template-rows: 120px auto 120px;
 
+        /*
         @include desktop {
-            grid-template-areas: "dashboard ball-container bottom"
             grid-template-columns: 20% auto 10%;
+            grid-template-areas: "dashboard ball-container bottom";
         }
+        */
 
+        @include desktop {
+            border-left: 2px solid color(accent);
+            border-right: 2px solid color(accent);
+        }
         
 
-        .subtitle {
+        .subtitle { 
             margin: 0;
             margin-top: .2em;
             font-size: 14px;
@@ -74,26 +82,30 @@ body {
             grid-template-columns: 1fr 1fr;
             z-index: 3;
             padding: $padding;
-            height: 120px;
 
+            /*
             @include desktop {
                 height: 100%;
                 clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
             }
+            */
 
             #score {
                 margin: 0;
                 font-size: 24px;
+                letter-spacing: 1.6px;
                 font-weight: $font-black;
                 
             }
 
             button {
+                outline: none;
                 display: inline-block;
                 text-decoration: none;
                 text-transform: uppercase;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: $font-bold;
+                letter-spacing: 4px;
                 color: color(accent);
                 background: none;
                 border-radius: 40px;
@@ -103,13 +115,12 @@ body {
                 border-color: color(accent);
 
                 &:hover {
-                    background-color: color(accent);
-                    color: color(primary)
+                    background-color: color(highlighted);
+                    color: color(accent);
                 }
 
                 &:active {
-                    background-color: gray;
-                    border-color: gray;
+                    background-color: color(selected);
                 }
             }
 
@@ -128,6 +139,15 @@ body {
             top: 50%;
             left: 50%;
             z-index: 0;
+
+            &:hover {
+                background-color: color(highlighted);
+                color: color(accent);
+            }
+
+            &:active {
+                background-color: color(selected);
+            }
         }
         
         #bottom {
@@ -140,23 +160,38 @@ body {
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
-            height: 120px;
-
-            @include desktop {
-                height: 100%;
-            }
 
             #slider-container {
                 display: inline-block;
                 width: 100%;
 
                 .slider {
+                    -webkit-appearance: none;
                     appearance: none;
                     width: 100%; 
                     height: 2px; 
                     background: colors(accent);
                     outline: 0px;
-                    margin-bottom: 1em;
+                    margin-bottom: 1.3em;
+
+                    &::-webkit-slider-thumb {
+                        -webkit-appearance: none;
+                        appearance: none;
+                        width: 20px; 
+                        height: 20px;
+                        border-radius: 50%;
+                        border: 2px solid color(accent);
+                        background: color(primary);
+                        
+                        &:hover {
+                            background-color: color(highlighted);
+                            color: color(accent);
+                        }
+
+                        &:active {
+                            background-color: color(selected);
+                        }
+                      }
                 }
 
             }

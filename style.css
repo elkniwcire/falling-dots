@@ -23,13 +23,18 @@ body main {
       grid-template-areas: "dashboard" "ball-container" "bottom";
   -ms-grid-rows: 120px auto 120px;
       grid-template-rows: 120px auto 120px;
+  /*
+        @include desktop {
+            grid-template-columns: 20% auto 10%;
+            grid-template-areas: "dashboard ball-container bottom";
+        }
+        */
 }
 
 @media (min-width: 800px) {
   body main {
-    -ms-grid-columns: 20% auto 10%;
-        grid-template-columns: 20% auto 10%;
-        grid-template-areas: "dashboard ball-container bottom";
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #FFFFFF;
   }
 }
 
@@ -51,29 +56,29 @@ body main #dashboard {
       grid-template-columns: 1fr 1fr;
   z-index: 3;
   padding: 1em;
-  height: 120px;
-}
-
-@media (min-width: 800px) {
-  body main #dashboard {
-    height: 100%;
-    -webkit-clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
-            clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
-  }
+  /*
+            @include desktop {
+                height: 100%;
+                clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
+            }
+            */
 }
 
 body main #dashboard #score {
   margin: 0;
   font-size: 24px;
+  letter-spacing: 1.6px;
   font-weight: 900;
 }
 
 body main #dashboard button {
+  outline: none;
   display: inline-block;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
+  letter-spacing: 4px;
   color: #FFFFFF;
   background: none;
   border-radius: 40px;
@@ -84,13 +89,12 @@ body main #dashboard button {
 }
 
 body main #dashboard button:hover {
-  background-color: #FFFFFF;
-  color: #0F0F0F;
+  background-color: #5050E3;
+  color: #FFFFFF;
 }
 
 body main #dashboard button:active {
-  background-color: gray;
-  border-color: gray;
+  background-color: #2424dc;
 }
 
 body main #dashboard #right {
@@ -109,6 +113,15 @@ body main .dot {
   z-index: 0;
 }
 
+body main .dot:hover {
+  background-color: #5050E3;
+  color: #FFFFFF;
+}
+
+body main .dot:active {
+  background-color: #2424dc;
+}
+
 body main #bottom {
   background-color: #0F0F0F;
   -webkit-clip-path: polygon(0 0, 100% 33%, 100% 100%, 0 100%);
@@ -125,13 +138,6 @@ body main #bottom {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  height: 120px;
-}
-
-@media (min-width: 800px) {
-  body main #bottom {
-    height: 100%;
-  }
 }
 
 body main #bottom #slider-container {
@@ -141,12 +147,31 @@ body main #bottom #slider-container {
 
 body main #bottom #slider-container .slider {
   -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   width: 100%;
   height: 2px;
   background: colors(accent);
   outline: 0px;
-  margin-bottom: 1em;
+  margin-bottom: 1.3em;
+}
+
+body main #bottom #slider-container .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #FFFFFF;
+  background: #0F0F0F;
+}
+
+body main #bottom #slider-container .slider::-webkit-slider-thumb:hover {
+  background-color: #5050E3;
+  color: #FFFFFF;
+}
+
+body main #bottom #slider-container .slider::-webkit-slider-thumb:active {
+  background-color: #2424dc;
 }
 /*# sourceMappingURL=style.css.map */
