@@ -48,21 +48,17 @@ body {
         margin-left: auto;
         margin-right: auto;
         background-color: color(bg);
-        display: grid;
-        grid-template-areas: "dashboard" "ball-container" "bottom";
-        grid-template-rows: 120px auto 120px;
 
-        /*
+
+        
         @include desktop {
+            display: grid;
             grid-template-columns: 20% auto 10%;
             grid-template-areas: "dashboard ball-container bottom";
-        }
-        */
-
-        @include desktop {
             border-left: 2px solid color(accent);
             border-right: 2px solid color(accent);
         }
+    
         
 
         .subtitle { 
@@ -82,6 +78,10 @@ body {
             grid-template-columns: 1fr 1fr;
             z-index: 3;
             padding: $padding;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 120px;
 
             /*
             @include desktop {
@@ -157,6 +157,10 @@ body {
             z-index: 3;
             padding: $padding;
             text-align: right;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 120px;
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;

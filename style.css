@@ -18,21 +18,15 @@ body main {
   margin-left: auto;
   margin-right: auto;
   background-color: #191919;
-  display: -ms-grid;
-  display: grid;
-      grid-template-areas: "dashboard" "ball-container" "bottom";
-  -ms-grid-rows: 120px auto 120px;
-      grid-template-rows: 120px auto 120px;
-  /*
-        @include desktop {
-            grid-template-columns: 20% auto 10%;
-            grid-template-areas: "dashboard ball-container bottom";
-        }
-        */
 }
 
 @media (min-width: 800px) {
   body main {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 20% auto 10%;
+        grid-template-columns: 20% auto 10%;
+        grid-template-areas: "dashboard ball-container bottom";
     border-left: 2px solid #FFFFFF;
     border-right: 2px solid #FFFFFF;
   }
@@ -56,6 +50,10 @@ body main #dashboard {
       grid-template-columns: 1fr 1fr;
   z-index: 3;
   padding: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 120px;
   /*
             @include desktop {
                 height: 100%;
@@ -129,6 +127,10 @@ body main #bottom {
   z-index: 3;
   padding: 1em;
   text-align: right;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 120px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
