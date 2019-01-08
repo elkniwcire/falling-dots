@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <button id="play-pause-button">Play</button>
-        Cheeseburger
-    </header>
-
     <main>
-        <section id="ball-container"></section>
-        <section id="bottom"></section>
+        <section id="dashboard">
+            <div id="left"><button id="play-pause-button">Play</button></div>
+            <div id="right">
+                <span id="score">100,000</span>
+                <span class="subtitle">Points</span>
+            </div>
+        </section>
+        <section id="ball-container">
+            <a href="#" class="dot"></a>
+        </section>
+        <section id="bottom">
+            <span id="slider-container">
+                    <input type="range" min="1" max="100" value="50" class="slider">
+                    <span class="subtitle">Pixels/sec</span>
+            </span>
+            
+        </section>
     </main>
     
 </body>
