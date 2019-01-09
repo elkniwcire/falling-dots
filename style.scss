@@ -52,11 +52,10 @@ body {
 
         
         @include desktop {
+            max-width: 100%;
             display: grid;
             grid-template-columns: 20% auto 10%;
             grid-template-areas: "dashboard ball-container bottom";
-            border-left: 2px solid color(accent);
-            border-right: 2px solid color(accent);
         }
     
         
@@ -77,18 +76,22 @@ body {
             display: grid;
             grid-template-columns: 1fr 1fr;
             z-index: 3;
-            padding: $padding;
             position: absolute;
             top: 0;
             left: 0;
             height: 120px;
+            width:100%;
 
-            /*
+            
             @include desktop {
                 height: 100%;
                 clip-path: polygon(0 0, 66% 0, 100% 100%, 0% 100%);
+                grid-area: dashboard;
+                position: relative;
+                top: auto;
+                left: auto;
             }
-            */
+            
 
             #score {
                 margin: 0;
@@ -124,9 +127,24 @@ body {
                 }
             }
 
+            #left {
+                padding: $padding;
+            }
+
             #right {
+                padding: $padding;
                 text-align: right;
             }
+        }
+
+        #ball-container {
+
+            @include desktop {
+                height: 100%;
+                width: 100%;
+                grid-area: ball-container;
+            }
+
         }
 
         .dot {
@@ -155,19 +173,26 @@ body {
             background-color: color(primary);
             clip-path: polygon(0 0, 100% 33%, 100% 100%, 0 100%);
             z-index: 3;
-            padding: $padding;
+            padding: 0;
             text-align: right;
             position: absolute;
             bottom: 0;
             left: 0;
             height: 120px;
+            width: 99%;
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
 
+            @include desktop {
+                height: 100%;
+                grid-area: bottom;
+            }
+
             #slider-container {
-                display: inline-block;
+                display: block;
                 width: 100%;
+                padding: $padding;
 
                 .slider {
                     -webkit-appearance: none;
