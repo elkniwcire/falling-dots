@@ -75,7 +75,11 @@ function moveDots(){
         /* Running this for each dot via loop */
         for (i=0; i < dots.length; i++){
             var position = dots[i].offsetTop; //get current position from top
-            if (position > window.innerHeight){
+            var positionLeft = dots[i].offsetLeft; //getting left position
+            var windowWidth = window.innerWidth;
+            var ballContainer = document.querySelector("#ball-container");
+            var ballContainerLeft = ballContainer.offsetLeft;
+            if (position > window.innerHeight || positionLeft > windowWidth || positionLeft < ballContainerLeft){
                 /*Removing dot if it goes off screen to save memory and performance*/
                 dots[i].parentElement.removeChild(dots[i]);
             } else {
@@ -126,7 +130,8 @@ function dotPressed(value, thisDot){
         var calculatedScore = (11 - Math.round(value/10)); //calculating score. Bigger dots = smaller score
         score = score + calculatedScore; //adding to total
         updateScore(score); //updating
-        thisDot.classList.add("puff-out-center"); //adding css class for animation
+        thisDot.classList.add("slide-out-blurred-tr"); //adding css class for animation
+        setTimeout(function(){thisDot.parentElement.removeChild(thisDot);}, 360); //removing dot after animation, slight delay
     } else if (isPlaying == false) {
         //do nothing
     }
