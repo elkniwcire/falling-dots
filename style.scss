@@ -14,7 +14,8 @@ $font-bold: 700;
 $font-black: 900;
 
 
-//following animation from Animista
+/*following animation from Animista */
+
 .puff-out-center {
 	        animation: puff-out-center .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) both;
 }
@@ -61,7 +62,7 @@ $font-black: 900;
       opacity: 0;
     }
   }
-  //Animista animation
+ /* end of Animista animation */
 
 body, html {
     height: 100%;
