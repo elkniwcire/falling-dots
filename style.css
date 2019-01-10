@@ -131,8 +131,6 @@ body main #ball-container {
 
 body main .dot {
   display: inline-block;
-  height: 50px;
-  width: 50px;
   border-radius: 50%;
   background-color: #FFFFFF;
   position: absolute;
