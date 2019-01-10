@@ -1,7 +1,7 @@
 
 var createDotInterval;
 var moveDotInterval;
-var moveDotSpeed = 1;
+var moveDotSpeed = 10;
 var score = 0;
 var isPlaying = false;
 
@@ -23,10 +23,10 @@ function updateSpeedText(value) {
 }
 
 slider.oninput = function() {
-    value = this.value;   //getting value of slider on change
-    updateSpeedText(value);
-    var speed = 101 - value;
-    UpdateSpeed(speed);
+    var speed = this.value;   //getting value of slider on change
+    updateSpeedText(speed);
+    var interval = 110 - speed; //reversing value. Higher speed = shorter interval
+    UpdateSpeed(interval);
 }
 
 function createDots() {
@@ -108,7 +108,8 @@ function dotPressed(value, thisDot){
     if (isPlaying == true){
         score = score + value;
         updateScore(score);
-        thisDot.parentElement.removeChild(thisDot);
+        thisDot.classList.add("puff-out-center");
+        //thisDot.parentElement.removeChild(thisDot);
     } else if (isPlaying == false) {
         //do nothing
     }
