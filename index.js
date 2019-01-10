@@ -1,8 +1,9 @@
 
 var createDotInterval;
 var moveDotInterval;
-var moveDotSpeed = 50;
+var moveDotSpeed = 1;
 var score = 0;
+var isPlaying = false;
 
 var button = document.querySelector("#play-pause-button");
 
@@ -35,6 +36,7 @@ function createDots() {
         var dot = document.createElement("a"); //create element
         dot.className = "dot"; //giving it class dot
         var randomSize = Math.floor((Math.random() * 100) + 10);
+        dot.style.top = (0 - randomSize) + "px";
         dot.style.height = randomSize + "px";
         dot.style.width = randomSize + "px";
         dot.onclick = function(){dotPressed(101-randomSize, this);};
@@ -86,12 +88,14 @@ function buttonPressed() {
 function play() {
     createDots();
     moveDots();
+    isPlaying = true;
     button.value = "pause";
 }
 
 function pause() {
     clearInterval(createDotInterval);
     clearInterval(moveDotInterval);
+    isPlaying = false;
     button.value = "play";
     var dots = document.querySelectorAll(".dot");
     var i;
@@ -101,13 +105,24 @@ function pause() {
 }
 
 function dotPressed(value, thisDot){
-    score = score + value;
-    updateScore(score);
-    thisDot.parentElement.removeChild(thisDot);
+    if (isPlaying == true){
+        score = score + value;
+        updateScore(score);
+        thisDot.parentElement.removeChild(thisDot);
+    } else if (isPlaying == false) {
+        //do nothing
+    }
+    
 }
 
 function UpdateSpeed(speed){
-    clearInterval(moveDotInterval);
     moveDotSpeed = speed;
-    moveDots(moveDotSpeed);
+    if (isPlaying == true) {
+        clearInterval(moveDotInterval);
+        moveDotSpeed = speed;
+        moveDots(moveDotSpeed);
+    } else if (isPlaying == false) {
+        //do nothing
+    }
+
 }

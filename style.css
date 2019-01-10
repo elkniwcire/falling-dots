@@ -14,9 +14,8 @@ body {
 body main {
   height: 100%;
   width: 100%;
-  /* max-width: 800px;
-        margin-left: auto;
-        margin-right: auto; */
+  position: relative;
+  overflow: hidden;
   background-color: #191919;
   display: -ms-grid;
   display: grid;
@@ -127,7 +126,6 @@ body main #ball-container {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: ball-container;
-  overflow: hidden;
 }
 
 body main .dot {
@@ -135,7 +133,6 @@ body main .dot {
   border-radius: 50%;
   background-color: #FFFFFF;
   position: absolute;
-  top: -20px;
   z-index: 0;
 }
 
@@ -180,6 +177,12 @@ body main #bottom #slider-container {
   display: block;
   width: 100%;
   padding: 1em;
+}
+
+@media (min-width: 700px) {
+  body main #bottom #slider-container {
+    padding-right: 1.5em;
+  }
 }
 
 body main #bottom #slider-container .slider {

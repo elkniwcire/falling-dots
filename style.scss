@@ -44,9 +44,8 @@ body {
 
         height: 100%;
         width: 100%;
-        /* max-width: 800px;
-        margin-left: auto;
-        margin-right: auto; */
+        position: relative;
+        overflow: hidden;
         background-color: color(bg);
         display: grid;
         grid-template-rows: 120px auto 120px;
@@ -151,7 +150,6 @@ body {
 
         #ball-container {
             grid-area: ball-container;
-            overflow: hidden;
         }
 
         .dot {
@@ -159,7 +157,6 @@ body {
             border-radius: 50%;
             background-color: color(accent);
             position: absolute;
-            top: -20px;
             z-index: 0;
 
             &:hover {
@@ -193,6 +190,11 @@ body {
                 display: block;
                 width: 100%;
                 padding: $padding;
+
+                @include desktop {
+                    padding-right: 1.5em;
+                    //fixing small padding issue in desktop due to angles
+                }
 
                 .slider {
                     -webkit-appearance: none;
