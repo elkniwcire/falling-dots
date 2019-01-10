@@ -136,8 +136,7 @@ body main .dot {
   border-radius: 50%;
   background-color: #FFFFFF;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: -20px;
   z-index: 0;
 }
 
