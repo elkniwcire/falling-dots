@@ -76,7 +76,7 @@ body main #dashboard #score {
   font-weight: 900;
 }
 
-body main #dashboard button {
+body main #dashboard .play-pause-button {
   outline: none;
   display: inline-block;
   text-decoration: none;
@@ -93,12 +93,12 @@ body main #dashboard button {
   border-color: #FFFFFF;
 }
 
-body main #dashboard button:hover {
+body main #dashboard .play-pause-button:hover {
   background-color: #5050E3;
   color: #FFFFFF;
 }
 
-body main #dashboard button:active {
+body main #dashboard .play-pause-button:active {
   background-color: #2424dc;
 }
 
@@ -127,6 +127,7 @@ body main #ball-container {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   grid-area: ball-container;
+  overflow: hidden;
 }
 
 body main .dot {

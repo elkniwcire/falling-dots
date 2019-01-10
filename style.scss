@@ -107,7 +107,7 @@ body {
                 font-weight: $font-black;
             }
 
-            button {
+            .play-pause-button {
                 outline: none;
                 display: inline-block;
                 text-decoration: none;
@@ -151,6 +151,7 @@ body {
 
         #ball-container {
             grid-area: ball-container;
+            overflow: hidden;
         }
 
         .dot {
